@@ -22,6 +22,14 @@ export default function Weather(props) {
     });
   }
 
+
+  function search() {
+    const apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
+
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
+  
   function handleSubmit(event) {
     event.preventDefault();
     search();
@@ -29,12 +37,6 @@ export default function Weather(props) {
 
   function handleCityChange(event) {
     setCity(event.target.value);
-  }
-  function search() {
-    const apiKey = "ec73684ab43da8e0668f04ae9704e6d3";
-
-    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
   }
 
   if (weatherData.ready) {
